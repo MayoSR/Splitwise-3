@@ -29,6 +29,9 @@ import { useDispatch } from 'react-redux'
 import { openDrawer } from '../redux/actions/index'
 import SwipeableDrawer from './SwipeableDrawer'
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import NativeSelect from '@material-ui/core/NativeSelect';
+import CallSplitIcon from '@material-ui/icons/CallSplit';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -51,9 +54,14 @@ export default function Groups() {
                     <Box>
                         <CloseIcon fontSize="large" onClick={() => { history.goBack() }} />
                     </Box>
-                    <Typography variant="h5" className={classes.title}>
-                        Split It
-                    </Typography>
+                    <Button
+                        variant="contained"
+                        color="default"
+                        className={classes.button}
+                        startIcon={<CallSplitIcon />}
+                    >
+                        Split
+                    </Button>
                 </Box>
                 <Box mt={2}>
                     <FormControl fullWidth className={classes.margin} variant="filled">
@@ -79,28 +87,12 @@ export default function Groups() {
                         />
                     </FormControl>
                 </Box>
-                <Box mt={4}>
-                    <Box display="flex" justifyContent="space-between" alignItems="center">
-                        <Typography variant="body1" className={classes.title} align="left">
-                            Add participants
-                        </Typography>
-                        <Box width={0.4}>
-                            <TextField
-                                id="standard-select-currency"
-                                select
-                                label="Select"
-                                fullWidth
-                                variant="outlined"
-                                size="small"
-                            >
-                                {["Split Evenly","Percentage","Manual"].map((option) => (
-                                    <MenuItem key={option} value={option}>
-                                        {option}
-                                    </MenuItem>
-                                ))}
-                            </TextField>
-                        </Box>
-                    </Box>
+                <Box mt={3}>
+                <Box display="flex" justifyContent="space-between" alignItems="center">
+                    <Typography variant="body1" gutterBottom align="left" style={{marginTop:"15px"}}>
+                        Add Participants
+                    </Typography>
+                </Box>
                     <Box mt={3}>
                         <Box display="flex" mb={2} justifyContent="space-between" >
                             <Box display="flex">

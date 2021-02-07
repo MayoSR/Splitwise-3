@@ -15,6 +15,8 @@ import Friends from './Friends';
 import Account from './Account';
 import Spending from './Spending';
 import Spent from './Spent';
+import FriendProfile from './FriendProfile';
+import EventDetails from './EventDetails';
 
 export default function RouterPage() {
     return (
@@ -49,6 +51,12 @@ export default function RouterPage() {
                 </Route>
                 <Route path="/spent">
                     <Spent />
+                </Route>
+                <Route path="/profile">
+                    <FriendProfile />
+                </Route>
+                <Route path="/eventdetails">
+                    <EventDetails />
                 </Route>
             </Switch>
             <Navbar />

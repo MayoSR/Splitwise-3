@@ -27,11 +27,18 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import { useDispatch } from 'react-redux'
 import {openDrawer} from '../redux/actions/index'
 import SwipeableDrawer from './SwipeableDrawer'
+import FriendsPay from './minicomponents/FriendsPay'
 
 const useStyles = makeStyles((theme) => ({
     root: {
         padding: "40px"
     },
+    title:{
+        fontWeight:"bold"
+    },
+    paperColor:{
+        backgroundColor:"#f5f5f5"
+    }
 
 }));
 export default function Groups() {
@@ -47,9 +54,9 @@ export default function Groups() {
             <Box className={classes.topNav} mb={5}>
                 <Box display="flex" justifyContent="space-between" alignItems="center">
                     <Box>
-                        <CloseIcon fontSize="large" onClick={() => { history.goBack() }} />
+                        <CloseIcon fontSize="medium" onClick={() => { history.goBack() }} />
                     </Box>
-                    <Typography variant="h5" className={classes.title}>
+                    <Typography variant="h6">
                         Done
                     </Typography>
                 </Box>
@@ -66,22 +73,13 @@ export default function Groups() {
                     </FormControl>
                 </Box>
                 <Box mt={4}>
-                    <Typography variant="body1" className={classes.title} align="left">
+                    <Typography variant="h6" className={classes.title} align="left">
                         Add participants
                     </Typography>
                     <Box mt={3}>
-                        <Box display="flex" mb={2}>
-                            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" style={{ marginRight: "20px" }} />
-                            <Box flexDirection="column" style={{ textAlign: "left" }}>
-                                <Typography variant="body1" display="block">
-                                    Harry
-                                </Typography>
-                                <Typography variant="subtitle2" display="block" >
-                                    owner
-                                </Typography>
-                            </Box>
-                        </Box>
-                        
+                        <FriendsPay name="Firstname Lastname" paidBy="Owner" />
+                    </Box>
+                    <Box mt={3}>
                         <SwipeableDrawer anchor={"right"} open={true} />
                     </Box>
                 </Box>

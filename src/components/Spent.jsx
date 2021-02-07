@@ -18,7 +18,7 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        background: "black",
+        background: "#1E1F21",
     },
     formControl: {
         margin: theme.spacing(1),
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
         borderTopLeftRadius: "25px",
         borderTopRightRadius: "25px",
         height: "75vh",
-        background: "white",
+        background: "#f5f5f5",
         padding: "20px 40px"
     },
     iconTop: {

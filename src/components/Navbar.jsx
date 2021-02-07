@@ -22,7 +22,8 @@ const useStyles = makeStyles({
         bottom: 0,
         '&.MuiBottomNavigation-root':{
             boxShadow:"0px -1px 3px 0px rgba(105,103,103,0.75)"
-        }
+        },
+        height:"60px"
     },
 });
 
@@ -45,13 +46,13 @@ export default function Navbar() {
             showLabels
             className={classes.root}
         >
-            <BottomNavigationAction onClick={() => changeRoute('')} label="Activity" icon={<AssignmentOutlinedIcon/>}>
+            <BottomNavigationAction onClick={() => changeRoute('')} label="Activity" icon={<AssignmentOutlinedIcon fontSize="medium"/>}>
             </BottomNavigationAction>
-            <BottomNavigationAction onClick={() => changeRoute('groups')} label="Groups" icon={<GroupOutlinedIcon />}>
+            <BottomNavigationAction onClick={() => changeRoute('groups')} label="Groups" icon={<GroupOutlinedIcon fontSize="medium" />}>
             </BottomNavigationAction>
-            <BottomNavigationAction onClick={() => changeRoute('friends')}  label="Friends" icon={<EmojiPeopleOutlinedIcon />}>
+            <BottomNavigationAction onClick={() => changeRoute('friends')}  label="Friends" icon={<EmojiPeopleOutlinedIcon fontSize="medium" />}>
             </BottomNavigationAction>
-            <BottomNavigationAction label="Account" onClick={() => changeRoute('account')} icon={<AccountBoxOutlinedIcon />}>
+            <BottomNavigationAction label="Account" onClick={() => changeRoute('account')} icon={<AccountBoxOutlinedIcon fontSize="medium"    />}>
             </BottomNavigationAction>
 
         </BottomNavigation>

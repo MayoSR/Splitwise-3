@@ -23,14 +23,23 @@ import SearchIcon from '@material-ui/icons/Search';
 import FormControl from '@material-ui/core/FormControl';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import Avatar from '@material-ui/core/Avatar';
+import FriendsPay from './minicomponents/FriendsPay'
 
 const useStyles = makeStyles({
+
     list: {
         width: 275,
+        background:"#f5f5f5",
+        height:"100%"
     },
     fullList: {
         width: 'auto',
     },
+    boxIn:{
+        background: "white",
+        padding:"15px",
+        borderRadius:"15px"
+    }
 });
 
 export default function SwipeableTemporaryDrawer() {
@@ -61,7 +70,7 @@ export default function SwipeableTemporaryDrawer() {
         >
             <Box mt={2} ml={2}>
 
-                <Typography variant="h6" display="block">
+                <Typography variant="h6" display="block" style={{fontWeight:"bold"}}>
                     Add participant
                 </Typography>
             </Box>
@@ -85,12 +94,8 @@ export default function SwipeableTemporaryDrawer() {
             </Box>
             <List>
                 <Box display="flex" flexDirection="column" alignItems="center">
-
-                    <Box display="flex" alignItems="center">
-                        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" style={{ marginRight: "10px" }} />
-                        <Typography variant="body2" display="block">
-                            Firstname Lastname
-                        </Typography>
+                    <Box mt={3}>
+                        <FriendsPay name="Firstname Lastname" paidBy="Owner" />
                     </Box>
                 </Box>
             </List>
@@ -103,12 +108,12 @@ export default function SwipeableTemporaryDrawer() {
     );
 
     return (
-        <div>
-            <Box display="flex" justifyContent="center" onClick={toggleDrawer("right", true)}>
+        <div className={classes.root}>
+            <Box className={classes.boxIn} display="flex" justifyContent="center" alignItems="center" onClick={toggleDrawer("right", true)}>
                 <AddCircleIcon fontSize="medium" style={{ marginRight: "10px" }} />
-                <Typography variant="body1" display="block">
+                <Typography variant="h6" display="block">
                     Add participant
-                    </Typography>
+                </Typography>
             </Box>
             <SwipeableDrawer
                 anchor={"right"}

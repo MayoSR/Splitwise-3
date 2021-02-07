@@ -14,7 +14,7 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        background: "black",
+        background: "#1E1F21",
     },
     backDrop: {
         height: "35vh"
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
         borderTopLeftRadius: "25px",
         borderTopRightRadius: "25px",
         height: "65vh",
-        background: "white",
+        background: "#f5f5f5",
         padding: "20px 40px"
     },
     iconTop: {
@@ -105,7 +105,7 @@ export default function OweOwed() {
                         <Box mr={3}>
                             <MuseumIcon fontSize="large" />
                         </Box>
-                        <Box display="flex" flexDirection="column" width={1} onClick={() => {history.push("/events")}}>
+                        <Box display="flex" flexDirection="column" width={1} onClick={() => {history.push("/eventdetails")}}>
                             <Box display="flex" alignItems="center">
                                 <Typography variant="body1" className={classes.title} style={{ marginLeft: "10px" }} gutterBottom>
                                     The Louvre

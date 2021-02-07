@@ -15,6 +15,8 @@ import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import { useHistory } from "react-router-dom";
 import LinearProgress from '@material-ui/core/LinearProgress';
+import FriendsPay from './minicomponents/FriendsPay';
+import ActivityExpandLine from './minicomponents/ActivityExpandLine';
 
 
 const BorderLinearProgress = withStyles((theme) => ({
@@ -95,21 +97,9 @@ export default function Groups() {
             <Box mt={2} mb={2}>
                 <BorderLinearProgress variant="determinate" value={50} />
             </Box>
-            <Typography variant="body1" className={classes.title} align="left">
-                All Friends
-            </Typography>
+            <ActivityExpandLine leftText="All Friends" />
             <Box display="flex" flexDirection="column" pt={3} mb={1}>
-                <Box display="flex" justifyContent="space-between" alignItems="center" className={classes.friend}>
-                    <Box display="flex"  alignItems="center">
-                        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" style={{marginRight:"20px"}}/>
-                        <Typography variant="body1" className={classes.title} align="left">
-                            All Friends
-                        </Typography>
-                    </Box>
-                    <Typography variant="body1" className={classes.title} align="left">
-                        + $63.67
-                    </Typography>
-                </Box>
+                <FriendsPay name="Firstname Lastname" amount="246" />
             </Box>
         </div>
     )

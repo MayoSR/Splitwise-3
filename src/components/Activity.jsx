@@ -18,11 +18,17 @@ import FormControl from '@material-ui/core/FormControl';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import SearchIcon from '@material-ui/icons/Search';
-
+import { useHistory } from "react-router-dom";
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import FilterListIcon from '@material-ui/icons/FilterList';
+import IconButton from '@material-ui/core/IconButton';
+import TopNav from './minicomponents/TopNav';
+import Datebox from './minicomponents/Datebox';
+import FriendsPay from './minicomponents/FriendsPay';
 
 const useStyles = makeStyles((theme) => ({
     topHalf: {
-        padding: "20px 50px 0px 50px"
+        padding: "20px 40px 0px 40px"
     },
     bottomHalf: {
         padding: "20px 40px"
@@ -34,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
         '& > *': {
             marginRight: "20px"
         },
-        marginBottom:"20px"
+        marginBottom: "20px"
     }
 }));
 
@@ -43,12 +49,12 @@ export default function OweOwed() {
 
     const classes = useStyles()
     const monthWiseData = useSelector(state => state.oweOwed)
-    
+    let history = useHistory();
 
     return (
         <div className={classes.root}>
             <div className={classes.topHalf}>
-                <MenuAppBar />
+                <TopNav title="Activity" />
                 <Box mt={2}>
                     <FormControl fullWidth className={classes.margin} variant="filled">
                         <InputLabel htmlFor="filled-adornment-amount">Amount</InputLabel>
@@ -80,27 +86,8 @@ export default function OweOwed() {
                         Activity
                     </Typography>
                 </div>
-                <Typography variant="body2" display="block" align="left" gutterBottom style={{marginBottom:"20px"}}>
-                    July 23, 2020
-                </Typography>
-                <Box display="flex" flexDirection="column">
-                    <Box display="flex" alignItems="center" justifyContent="space-between">
-                        <Box display="flex">
-                            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" style={{ marginRight: "20px" }} />
-                            <Box flexDirection="column" style={{ textAlign: "left" }}>
-                                <Typography variant="caption" display="block">
-                                    Name
-                                </Typography>
-                                <Typography variant="caption" display="block" >
-                                    paid you
-                            </Typography>
-                            </Box>
-                        </Box>
-                        <Typography variant="subtitle2" display="block">
-                            + $24.56
-                        </Typography>
-                    </Box>
-                </Box>
+                <Datebox date="22 Feb,2021" />
+                <FriendsPay name="Firstname Lastname" paidBy="paid you" amount="246" />
             </div>
         </div>
     )
