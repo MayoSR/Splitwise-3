@@ -13,6 +13,8 @@ import MuseumIcon from '@material-ui/icons/Museum';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import SwipeableDrawer from './SwipeableDrawer'
+import ActivityExpandLine from './minicomponents/ActivityExpandLine';
+import FriendsPay from './minicomponents/FriendsPay';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -79,22 +81,8 @@ export default function OweOwed() {
                 </Box>
             </div>
             <div className={classes.foreDrop}>
-                <Typography variant="body1" className={classes.title} align="left">
-                    All Friends
-                        </Typography>
-                <Box display="flex" flexDirection="column" pt={3} mb={1}>
-                    <Box display="flex" justifyContent="space-between" alignItems="center" className={classes.friend} onClick={() => history.push("profile")}>
-                        <Box display="flex" alignItems="center">
-                            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" style={{ marginRight: "20px" }} />
-                            <Typography variant="body1" className={classes.title} align="left">
-                                Firstname Lastname
-                                    </Typography>
-                        </Box>
-                        <Typography variant="body1" className={classes.title} align="left">
-                            + $63.67
-                                </Typography>
-                    </Box>
-                </Box>
+                <ActivityExpandLine leftText="All Friends" />
+                <FriendsPay name="Firstname Lastname" paidBy="owes" amount="246"  />
                 <Box mt={4}>
                     <SwipeableDrawer />
                 </Box>

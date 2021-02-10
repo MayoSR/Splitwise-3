@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -28,6 +28,7 @@ import { useDispatch } from 'react-redux'
 import {openDrawer} from '../redux/actions/index'
 import SwipeableDrawer from './SwipeableDrawer'
 import FriendsPay from './minicomponents/FriendsPay'
+import { createGroup } from '../redux/actions';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -48,6 +49,12 @@ export default function Groups() {
     const drawerState = useSelector(state => state.drawerState)
     const history = useHistory()
     const dispatch = useDispatch()
+    const textRef = useRef();
+    
+    const createGroupCall = () =>{
+        dispatch(createGroup(textRef.current.value))
+        history.goBack()
+    }
 
     return (
         <div className={classes.root}>
@@ -56,7 +63,7 @@ export default function Groups() {
                     <Box>
                         <CloseIcon fontSize="medium" onClick={() => { history.goBack() }} />
                     </Box>
-                    <Typography variant="h6">
+                    <Typography variant="h6"  onClick={() => createGroupCall()}>
                         Done
                     </Typography>
                 </Box>
@@ -64,6 +71,7 @@ export default function Groups() {
                     <FormControl fullWidth className={classes.margin} variant="filled">
                         <InputLabel htmlFor="filled-adornment-amount">Group Name</InputLabel>
                         <FilledInput
+                        inputRef={textRef}
                             id="filled-adornment-amount"
                             startAdornment={
                                 <InputAdornment position="start">

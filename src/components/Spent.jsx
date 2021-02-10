@@ -15,6 +15,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
+import FriendsPay from './minicomponents/FriendsPay';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -122,24 +123,7 @@ export default function OweOwed() {
                     </Box>
                 </Box>
                 <Box display="flex" flexDirection="column" mt={3} >
-                    <Box display="flex" alignItems="center" className={classes.costBox}>
-                        <Box style={{padding:"3px",marginRight:"10px"}} className={classes.iconBox}>
-                            <ConfirmationNumberOutlinedIcon fontSize="large" />
-                        </Box>
-                        <Box flexDirection="column" display="flex" width={1}>
-                            <Typography variant="subtitle2" align="left" >
-                                History
-                            </Typography>
-                            <Box display="flex" justifyContent="space-between">
-                                <Typography variant="subtitle2" align="left">
-                                    26 Jul
-                                </Typography>
-                                <Typography variant="subtitle2" align="left">
-                                    $150.65
-                                </Typography>
-                            </Box>
-                        </Box>
-                    </Box>
+                    <FriendsPay  type="iconBox" icon ={<ConfirmationNumberOutlinedIcon fontSize="large" style={{marginRight: "20px"}} />} name="Louvre Museum" paidBy="26 Jul,2020" amount="650" />
                 </Box>
             </div>
         </div>

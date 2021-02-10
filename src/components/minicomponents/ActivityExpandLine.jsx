@@ -24,14 +24,14 @@ export default function ActivityExpandLine(props) {
 
     return (
         <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
-            <Typography variant="subtitle1" gutterBottom>
+            <Typography variant="body1" gutterBottom style={{fontWeight:"bold"}}>
                 {props.leftText}
             </Typography>
-            <Box display="flex" >
+            <Box display="flex" alignItems="center">
                 {
                     (props.seeAllText !== undefined) ? (
                         <>
-                            <Typography variant="subtitle1" gutterBottom onClick={() => activityFullScreen()}>
+                            <Typography variant="subtitle1" onClick={() => activityFullScreen()} style={{fontWeight:"bold"}}>
                                 {props.seeAllText}
                             </Typography>
                             <ChevronRightIcon />

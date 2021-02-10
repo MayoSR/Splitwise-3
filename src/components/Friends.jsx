@@ -60,7 +60,7 @@ export default function Groups() {
     }
 
     const openGroup = () => {
-        history.push("/addfriends")
+        history.push("/profile")
     }
 
     return (
@@ -99,7 +99,7 @@ export default function Groups() {
             </Box>
             <ActivityExpandLine leftText="All Friends" />
             <Box display="flex" flexDirection="column" pt={3} mb={1}>
-                <FriendsPay name="Firstname Lastname" amount="246" />
+                <FriendsPay changeRoute={openGroup} name="Firstname Lastname" amount="354" />
             </Box>
         </div>
     )

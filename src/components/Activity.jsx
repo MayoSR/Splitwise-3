@@ -50,7 +50,8 @@ export default function OweOwed() {
     const classes = useStyles()
     const monthWiseData = useSelector(state => state.oweOwed)
     let history = useHistory();
-
+    const state = useSelector(state => state.accountDetails);
+    
     return (
         <div className={classes.root}>
             <div className={classes.topHalf}>
@@ -87,7 +88,11 @@ export default function OweOwed() {
                     </Typography>
                 </div>
                 <Datebox date="22 Feb,2021" />
-                <FriendsPay name="Firstname Lastname" paidBy="paid you" amount="246" />
+                {
+                    state.recentTransactions.map((ele) => {
+                        return <FriendsPay name={ele.name} paidBy={ele.status} amount={ele.amount} isPos={ele.paidYou} />
+                    })
+                }
             </div>
         </div>
     )

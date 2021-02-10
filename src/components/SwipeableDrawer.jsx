@@ -95,7 +95,9 @@ export default function SwipeableTemporaryDrawer() {
             <List>
                 <Box display="flex" flexDirection="column" alignItems="center">
                     <Box mt={3}>
-                        <FriendsPay name="Firstname Lastname" paidBy="Owner" />
+                        <FriendsPay name="Peter Drury" paidBy="Owner" />
+                        <FriendsPay name="Lewis Hamilton" paidBy="Owner" />
+                        <FriendsPay name="Sebastian Vettel" paidBy="Owner" />
                     </Box>
                 </Box>
             </List>

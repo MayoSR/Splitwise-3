@@ -3,6 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Avatar from '@material-ui/core/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
+import {useDispatch,useSelector} from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -32,9 +33,14 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export default function FriendsPay(props) {
+export default function AddParticipants(props) {
 
     const classes = useStyles()
+    const dispatch = useDispatch()
+
+    const addParticipants = () =>{
+
+    }
 
     const empty = () => {}
 

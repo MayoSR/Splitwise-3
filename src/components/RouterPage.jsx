@@ -31,7 +31,7 @@ export default function RouterPage() {
                 <Route path="/groups">
                     <Groups />
                 </Route>
-                <Route path="/group">
+                <Route exact path="/group/:group">
                     <GroupPage />
                 </Route>
                 <Route path="/newgroup">

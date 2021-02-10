@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
@@ -17,6 +17,8 @@ import { useHistory } from "react-router-dom";
 import TopNavTab from './minicomponents/TopNavTab';
 import ActivityExpandLine from './minicomponents/ActivityExpandLine';
 import GroupComponent from './minicomponents/GroupComponent';
+import { createGroup } from '../redux/actions';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,33 +29,53 @@ const useStyles = makeStyles((theme) => ({
 export default function Groups() {
 
     const classes = useStyles()
-    const drawerState = useSelector(state => state.drawerState)
+    const groups = useSelector(state => state.groups)
     const history = useHistory();
+    const dispatch = useDispatch()
 
-    const changeRoute = () =>{
+    const changeRoute = () => {
         history.push("/newgroup");
     }
 
-    const openGroup = () =>{
+    const openGroup = () => {
         history.push("/group")
     }
+
 
     return (
         <div className={classes.root}>
             <TopNavTab title="Groups" />
             <div className={classes.bottomNav}>
-                <Box className={classes.quickAccess} mb={5}>
-                    <ActivityExpandLine leftText="Recent" />
-                    <div className={classes.groups}>
-                        <GroupComponent eventname="Paris Summer vacation" noOfFriends="4" noOfExpenses="4" cost="564.34" isBookmarked="true" />
-                    </div>
-                </Box>
-                <Box className={classes.allGroups} mb={5}>
-                <ActivityExpandLine leftText="All Groups" />
-                    <div className={classes.groups}>
-                        <GroupComponent eventname="Avengers Endgame" noOfFriends="3" noOfExpenses="6" cost="83.15" />
-                    </div>
-                </Box>
+                {
+                    groups.filter(ele => ele.isBookmarked).length ? (
+                        <Box className={classes.quickAccess} mb={5}>
+                            <ActivityExpandLine leftText="Bookmarked" />
+                            <div className={classes.groups}>
+                                {
+                                    groups.filter(ele => ele.isBookmarked).map((ele) => {
+                                        return <GroupComponent groupID={ele.groupID} eventname={ele.groupName} noOfFriends={ele.noOfFriends} noOfExpenses={ele.noOfExpenses} cost={ele.totalSpending} isBookmarked={ele.isBookmarked} />
+                                    })
+                                }
+                            </div>
+                        </Box>
+                    ) :
+                        <></>
+                }
+                {
+                    groups.filter(ele => !ele.isBookmarked).length ? (
+                        <Box className={classes.allGroups} mb={5}>
+                            <ActivityExpandLine leftText="All Groups" />
+                            <div className={classes.groups}>
+                                {
+                                    groups.filter(ele => !ele.isBookmarked).map((ele) => {
+                                        return <GroupComponent groupID={ele.groupID} eventname={ele.groupName} noOfFriends={ele.noOfFriends} noOfExpenses={ele.noOfExpenses} cost={ele.totalSpending} isBookmarked={ele.isBookmarked} />
+                                    })
+                                }
+                            </div>
+                        </Box>
+                    ) :
+                        <></>
+                }
             </div>
         </div>
     )

@@ -26,6 +26,9 @@ import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 import ConfirmationNumberOutlinedIcon from '@material-ui/icons/ConfirmationNumberOutlined';
+import FriendsPay from './minicomponents/FriendsPay';
+import Datebox from './minicomponents/Datebox';
+import ActivityExpandLine from './minicomponents/ActivityExpandLine';
 
 const useStyles = makeStyles((theme) => ({
     topHalf: {
@@ -48,16 +51,22 @@ const useStyles = makeStyles((theme) => ({
         height: theme.spacing(7),
     },
     reminder: {
-        border: "1px solid black"
+        borderRadius:"15px",
+        color:"white",
+        background:"#0dae6a"
     },
     costBox: {
         border: "1px solid black",
         padding: "15px"
+    },
+    buttonColor:{
+        background:"#fbc96a",
+        fontWeight:"bold"
     }
 }));
 
 
-export default function OweOwed() {
+export default function FriendProfile() {
 
     const classes = useStyles()
     const monthWiseData = useSelector(state => state.oweOwed)
@@ -84,7 +93,7 @@ export default function OweOwed() {
                             Firstname Lastname
                         </Typography>
                         <Typography variant="subtitle2" display="block" align="left">
-                            Not join yet. <Link href="#" onClick={(e) => e.preventDefault()} variant="body2">
+                            Not joined yet. <Link href="#" onClick={(e) => e.preventDefault()} variant="body2">
                                 Resend invitation
                                         </Link>
                         </Typography>
@@ -98,36 +107,15 @@ export default function OweOwed() {
                         <Typography variant="h5" display="block">
                             + $24.56
                         </Typography>
-                        <Button variant="contained" color="primary" size="medium" startIcon={<NotificationsActiveIcon />}>
-                            Primary
+                        <Button variant="contained" className={classes.buttonColor} color="#000" size="medium" startIcon={<NotificationsActiveIcon />}>
+                            Remind
                         </Button>
                     </Box>
                 </Box>
-                <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
-                    <Typography variant="subtitle1" gutterBottom>
-                        Activity
-                    </Typography>
-                </Box>
-                <Typography variant="body2" display="block" className={classes.monthData} align="left">
-                    July 23, 2020
-                </Typography>
-                <Box display="flex" alignItems="center" className={classes.costBox} mt={2}>
-                    <Box style={{ padding: "3px", marginRight: "10px" }} className={classes.iconBox}>
-                        <ConfirmationNumberOutlinedIcon fontSize="large" />
-                    </Box>
-                    <Box flexDirection="column" display="flex" width={1}>
-                        <Typography variant="subtitle2" align="left" >
-                            History
-                            </Typography>
-                        <Box display="flex" justifyContent="space-between">
-                            <Typography variant="subtitle2" align="left">
-                                26 Jul
-                                </Typography>
-                            <Typography variant="subtitle2" align="left">
-                                $150.65
-                                </Typography>
-                        </Box>
-                    </Box>
+                <ActivityExpandLine leftText="Activity" />
+                <Datebox date="Jul 21,2020" />
+                <Box display="flex" flexDirection="column">
+                    <FriendsPay  type="iconBox" icon ={<ConfirmationNumberOutlinedIcon fontSize="large" style={{marginRight: "20px"}} />} name="Louvre Museum" paidBy="26 Jul,2020" amount="650" />
                 </Box>
             </div>
         </div>

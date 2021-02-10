@@ -1,220 +1,223 @@
-const initialState = {
-    oweOwed: {
-        "SEPTEMBER": [
-            {
-                youPaid: false,
-                name: "Johnathon",
-                amtPaid: 50,
-                for: "McDonalds",
-                calcDiff: 20,
-                date: "23 SEP"
-            },
-            {
-                youPaid: false,
-                name: "Kevin",
-                amtPaid: 150,
-                for: "McDonalds",
-                calcDiff: 70,
-                date: "21 SEP"
-            },
-            {
-                youPaid: true,
-                name: "Sadie",
-                amtPaid: 120,
-                for: "McDonalds",
-                calcDiff: 60,
-                date: "15 SEP"
-            },
-            {
-                youPaid: true,
-                name: "Maylene",
-                amtPaid: 200,
-                for: "McDonalds",
-                calcDiff: 120,
-                date: "12 SEP"
-            }
-        ],
-        "AUGUST": [
-            {
-                youPaid: false,
-                name: "Johnathon",
-                amtPaid: 50,
-                for: "McDonalds",
-                calcDiff: 20,
-                date: "23 AUG"
-            },
-            {
-                youPaid: false,
-                name: "Kevin",
-                amtPaid: 150,
-                for: "McDonalds",
-                calcDiff: 70,
-                date: "21 AUG"
-            },
-            {
-                youPaid: true,
-                name: "Sadie",
-                amtPaid: 120,
-                for: "McDonalds",
-                calcDiff: 60,
-                date: "15 AUG"
-            },
-            {
-                youPaid: true,
-                name: "Maylene",
-                amtPaid: 200,
-                for: "McDonalds",
-                calcDiff: 120,
-                date: "12 AUG"
-            }
-        ],
-    },
-    groups: {
-        "EVENT_1" : {
-            event: "Dinner",
-            members: [
-                'USER_1', 'USER_2', 'USER_3', 'USER_4', 'USER_5'
-            ],
-            totalSpent: 600,
-            date:"1 AUG"
-        },
-        "EVENT_2" : {
-            event: "Lunch",
-            members: [
-                'USER_1', 'USER_2',
-            ],
-            totalSpent: 200,
-            date:"22 AUG"
-        },
-        "EVENT_3" : {
-            event: "Trip",
-            members: [
-                'USER_1','USER_4', 'USER_5'
-            ],
-            totalSpent: 450,
-            date:"11 AUG"
-        },
-        "EVENT_4" : {
-            event: "Ice cream",
-            members: [
-                'USER_1','USER_5'
-            ],
-            totalSpent: 80,
-            date:"10 AUG"
-        },
-        "EVENT_5" : {
-            event: "Race",
-            members: [
-                'USER_1', 'USER_2', 'USER_3', 'USER_4', 
-            ],
-            totalSpent: 300,
-            date:"6 AUG"
-        },
+import MuseumIcon from '@material-ui/icons/Museum';
+import ConfirmationNumberOutlinedIcon from '@material-ui/icons/ConfirmationNumberOutlined';
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+import LocalDiningOutlinedIcon from '@material-ui/icons/LocalDiningOutlined';
+import HelpOutlinedIcon from '@material-ui/icons/HelpOutlined';
+import FlightOutlinedIcon from '@material-ui/icons/FlightOutlined';
+import ColorLensOutlinedIcon from '@material-ui/icons/ColorLensOutlined';
 
+const initialState = {
+    accountDetails:{
+        balance:"$650",
+        totalSpending:450.53,
+        totalReceivable:1243.56,
+        recentTransactions:[
+            {
+                name:"Sarah",
+                status:"paid you",
+                amount:160,
+                paidYou:true,
+            },
+            {
+                name:"Jerry",
+                status:"was paid",
+                amount:240,
+                paidYou:false,
+            },
+            {
+                name:"Joe",
+                status:"paid you",
+                amount:460,
+                paidYou:true,
+            },
+        ]
     },
-    users: {
-        'USER_1': {
-            events: {
-                "EVENT_1": {
-                    owed:110
-                },
-                "EVENT_2": {
-                    owed:130
-                },
-                "EVENT_3": {
-                    owed:100
-                },
-                "EVENT_4": {
-                    owed:140
-                },
-                "EVENT_5": {
-                    owed:120
-                },
-            }
+    groups:[
+        {
+            groupID:"GROUP_1",
+            groupName:"Paris Summer Vacation",
+            isBookmarked:true,
+            noOfFriends:4,
+            noOfExpenses:4,
+            totalSpending:564.34,
+            dateCreated:new Date(2021,8,24),
         },
-        'USER_2': {
-            events: {
-                "EVENT_1": {
-                    owed:110
-                },
-                "EVENT_2": {
-                    owed:130
-                },
-                "EVENT_3": {
-                    owed:100
-                },
-                "EVENT_4": {
-                    owed:140
-                },
-                "EVENT_5": {
-                    owed:120
-                },
-            }
+        {
+            groupID:"GROUP_2",
+            groupName:"Avengers Endgame",
+            isBookmarked:false,
+            noOfFriends:3,
+            noOfExpenses:5,
+            totalSpending:164.34,
+            dateCreated:new Date(2021,8,26),
         },
-        'USER_3': {
-            events: {
-                "EVENT_1": {
-                    owed:110
+    ],
+    groupData:[
+        {
+            groupID:"GROUP_1",
+            groupName:"Paris Summer Vacation",
+            totalSpending:564.34,
+            totalReceivable:123.64,
+            dateCreated:"26 Jul,2020",
+            events:[
+                {
+                    eventID:"EVENT_1",
+                    eventName:"Louvre Museum",
+                    eventDate:new Date(2021,8,24),
+                    eventIcon:<MuseumIcon  fontSize="large" style={{marginRight: "20px"}} />,
+                    totalSpending:660,
+                    category:"Entertainment"
+                }
+            ],
+            participants:[
+                {
+                    name:"Sarah",
+                    status:"owes",
+                    amount:160,
                 },
-                "EVENT_2": {
-                    owed:130
+                {
+                    name:"Sam",
+                    status:"owed",
+                    amount:280,
                 },
-                "EVENT_3": {
-                    owed:100
+                {
+                    name:"Jane",
+                    status:"owes",
+                    amount:220,
                 },
-                "EVENT_4": {
-                    owed:140
-                },
-                "EVENT_5": {
-                    owed:120
-                },
-            }
+            ]
         },
-        'USER_4': {
-            events: {
-                "EVENT_1": {
-                    owed:110
+        {
+            groupID:"GROUP_2",
+            groupName:"Avengers Endgame",
+            totalSpending:132.44,
+            totalReceivable:26.37,
+            dateCreated:"28 Jul,2020",
+            events:[
+                {
+                    eventID:"EVENT_4",
+                    eventName:"Tickets",
+                    eventDate:new Date(2021,8,24),
+                    eventIcon:<ConfirmationNumberOutlinedIcon  fontSize="large" style={{marginRight: "20px"}} />,
+                    totalSpending:60.24,
+                    category:"Entertainment"
                 },
-                "EVENT_2": {
-                    owed:130
+                {
+                    eventID:"EVENT_1",
+                    eventName:"Nachos",
+                    eventDate:new Date(2021,8,24),
+                    eventIcon:<LocalDiningOutlinedIcon  fontSize="large" style={{marginRight: "20px"}} />,
+                    totalSpending:25.65,
+                    category:"Food"
                 },
-                "EVENT_3": {
-                    owed:100
+                {
+                    eventID:"EVENT_2",
+                    eventName:"Popcorn",
+                    eventDate:new Date(2021,8,24),
+                    eventIcon:<LocalDiningOutlinedIcon  fontSize="large" style={{marginRight: "20px"}} />,
+                    totalSpending:35.64,
+                    category:"Food"
                 },
-                "EVENT_4": {
-                    owed:140
+                {
+                    eventID:"EVENT_3",
+                    eventName:"Coke",
+                    eventDate:new Date(2021,8,24),
+                    eventIcon:<LocalDiningOutlinedIcon  fontSize="large" style={{marginRight: "20px"}} />,
+                    totalSpending:10.43,
+                    category:"Food"
                 },
-                "EVENT_5": {
-                    owed:120
+            ],
+            participants:[
+                {
+                    name:"George",
+                    status:"owes",
+                    amount:32.62,
                 },
-            }
-        },
-        'USER_5': {
-            events: {
-                "EVENT_1": {
-                    owed:110
+                {
+                    name:"Sebastian",
+                    status:"owed",
+                    amount:28.31,
                 },
-                "EVENT_2": {
-                    owed:130
+                {
+                    name:"Peter",
+                    status:"owes",
+                    amount:70.54,
                 },
-                "EVENT_3": {
-                    owed:100
-                },
-                "EVENT_4": {
-                    owed:140
-                },
-                "EVENT_5": {
-                    owed:120
-                },
-            }
+            ]
         }
+    ],
+    categoricalData:{
+        "entertainment":{
+            totalSpending:"762.43"
+        },
+        "shopping":{
+            totalSpending:"234.54"
+        },
+        "food":{
+            totalSpending:"214.52"
+        },
+        "unknown":{
+            totalSpending:"975.45"
+        },
+        "transport":{
+            totalSpending:"642.12"
+        },
+        "other":{
+            totalSpending:"241.56"
+        },
     },
-    drawerState:false
+    
+}
+
+function newGroup(gname){
+    let groupID = "GROUP_"+parseInt(Math.random()*100)
+    let newDate = new Date(2021,8,26)
+    return {
+        groupInfo:{
+            groupID:groupID,
+            groupName:gname,
+            isBookmarked:false,
+            noOfFriends:0,
+            noOfExpenses:0,
+            totalSpending:0,
+            dateCreated:newDate,
+        },
+        groupDataInfo:newGroupData(groupID,gname,newDate)
+    }
+    
+}
+
+function newGroupData(groupID,gname,createdDate){
+    return {
+            groupID:groupID,
+            groupName:gname,
+            totalSpending:0,
+            totalReceivable:0,
+            dateCreated:createdDate,
+            events:[
+
+            ],
+            participants:[
+
+            ]
+        }
 }
 
 export default function appReducer(state = initialState, action) {
     switch (action.type) {
+        case("BOOKMARK_GROUP"):
+            state = {...state,groups:state.groups.map(ele => ele.groupID === action.id ? {...ele,isBookmarked:true} : {...ele})}
+            return state
+        case("REMOVE_BOOKMARK_GROUP"):
+            state = {...state,groups:state.groups.map(ele => ele.groupID === action.id ? {...ele,isBookmarked:false} : {...ele})}
+            return state
+        case("CREATE_GROUP"):
+            let groupMetaData = newGroup(action.groupName)
 
+            state = {...state,groups:[...state.groups,groupMetaData["groupInfo"]]}
+            state = {...state,groupData:[...state.groupData,groupMetaData["groupDataInfo"]]}
+            console.log(state)
+            return state
         default:
             return state
     }

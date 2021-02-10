@@ -11,6 +11,9 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Divider from '@material-ui/core/Divider';
 import MuseumIcon from '@material-ui/icons/Museum';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import FriendsPay from './minicomponents/FriendsPay';
+import Datebox from './minicomponents/Datebox';
+import {useParams} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,9 +25,9 @@ const useStyles = makeStyles((theme) => ({
     foreDrop: {
         borderTopLeftRadius: "25px",
         borderTopRightRadius: "25px",
-        height: "65vh",
         background: "#f5f5f5",
-        padding: "20px 40px"
+        padding: "20px 40px",
+        height:"80vh"
     },
     iconTop: {
         '& svg': {
@@ -49,14 +52,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function OweOwed() {
+export default function GroupPage(props) {
 
     const classes = useStyles()
-    const monthWiseData = useSelector(state => state.oweOwed)
+    const {group} = useParams()
+    const groupData = useSelector(state => state.groupData.filter(ele => ele.groupID === group))[0]
+    const eventData = groupData.events
     const history = useHistory();
 
     const addEvent = () => {
         history.push("/event");
+    }
+
+    const changeRoute = () => {
+        history.push("/eventdetails")
     }
 
     return (
@@ -69,10 +78,11 @@ export default function OweOwed() {
                 <br></br>
                 <Box justifyContent="center" flexDirection="column" alignItems="center" className={classes.balance}>
                     <Typography variant="h5" gutterBottom>
-                        Paris Summer Vacation
+                        {groupData.groupName}
                     </Typography>
                     <Typography variant="caption" gutterBottom>
-                        Last sync on Jul 28,2020
+                        {console.log(groupData)}
+                        Last sync on {groupData.dateCreated}
                     </Typography>
                 </Box>
             </div>
@@ -83,7 +93,7 @@ export default function OweOwed() {
                             Group Spent:
                         </Typography>
                         <Typography variant="h5" gutterBottom>
-                            $456.78
+                            ${groupData.totalSpending}
                         </Typography>
                     </Box>
                     <Box display="flex" flexDirection="column">
@@ -91,40 +101,16 @@ export default function OweOwed() {
                             Total Receiveable:
                         </Typography>
                         <Typography variant="h5" gutterBottom>
-                            + $924.65
+                            + ${groupData.totalReceivable}
                         </Typography>
                     </Box>
                 </Box>
                 <Divider style={{ marginBottom: "30px" }} />
-
-                <Typography variant="body2" display="block" className={classes.monthData}>
-                    July 23, 2020
-                </Typography>
+                <Datebox date="26 Feb,2020" />
                 <Box display="flex" flexDirection="column">
-                    <Box display="flex" className={classes.eventCard} justifyContent="space-between" alignItems="center">
-                        <Box mr={3}>
-                            <MuseumIcon fontSize="large" />
-                        </Box>
-                        <Box display="flex" flexDirection="column" width={1} onClick={() => {history.push("/eventdetails")}}>
-                            <Box display="flex" alignItems="center">
-                                <Typography variant="body1" className={classes.title} style={{ marginLeft: "10px" }} gutterBottom>
-                                    The Louvre
-                                </Typography>
-                            </Box>
-                            <Box display="flex" justifyContent="space-between" alignItems="center" >
-                                <Box display="flex">
-                                    <Typography variant="subtitle2" className={classes.title} style={{ marginLeft: "10px" }} gutterBottom>
-                                        Total: $232.54
-                                    </Typography>
-                                </Box>
-                                <Box>
-                                    <Typography variant="subtitle2" className={classes.title} gutterBottom>
-                                        + $534.65
-                                    </Typography>
-                                </Box>
-                            </Box>
-                        </Box>
-                    </Box>
+                    {eventData.map(ele => {
+                        return <FriendsPay changeRoute={changeRoute} type="iconBox" icon ={ele.eventIcon} name={ele.eventName} paidBy={toString(ele.eventDate)} amount={ele.totalSpending} />
+                    })}
                 </Box>
             </div>
         </div>
